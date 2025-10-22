@@ -1,0 +1,232 @@
+/* ------------------------------
+   Font setup (Lato)
+--------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* ------------------------------
+   Base styling
+--------------------------------*/
+
+
+body {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  background-color: #A9B5DF;  
+  margin: 0;
+  padding: 5px 0;
+  display: flex;              /* center gray box vertically + horizontally */
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+  overflow: hidden;           /* avoid scrollbars for clean look */
+  min-height: 100vh; 
+}
+
+/* ------------------------------
+   Main content container
+--------------------------------*/
+
+table {
+  border: none;
+  border-spacing: 0;
+  margin: auto;
+  max-width: 1200px;
+  width: 90%;                 /* responsive width */
+  background-color: #FEFAF6;  /* inner gray */
+  border-radius: 10px;
+  padding:20px 0;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------
+   Text styles
+--------------------------------*/
+.name {
+  padding-top: 20px;
+  margin: 0;
+  font-size: 38px;
+  font-weight: 700;
+  text-underline-offset: 6px;
+  text-align: center;
+}
+
+
+h4 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+
+h3 {
+  font-size: 17px;
+  padding-bottom: 6px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* ------------------------------
+   Links
+--------------------------------*/
+a {
+  color: #7886C7;     
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   Table cell layout
+--------------------------------*/
+/* Left column (name + photo) */
+td:first-child {
+  width: 30%;
+  text-align: center;
+  vertical-align: top;
+  
+}
+
+/* Right column (About Me) */
+td:last-child {
+  width: 70%;
+  vertical-align: top;
+  padding-top: 10px;   /* 🔹 shifts “About Me” down a bit to align with name/photo */
+}
+
+/* ------------------------------
+   Responsive design
+--------------------------------*/
+@media (max-width: 850px) {
+  body {
+    height: auto;             /* allow vertical scroll if content too tall */
+    padding: 20px 0;
+    overflow: auto;
+  }
+
+  table {
+    max-width: 95%;
+    padding: 5px;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  td {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  td:last-child {
+    padding-top: 5px;  /* reduce top padding on mobile */
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  img[alt="Profile photo"] {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* nav */
+.cute-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 60px;
+  padding: 5px 0 5px 0;
+}
+
+/* Clean text-only buttons */
+.cute-nav button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  position: relative;
+}
+
+
+.cute-nav button:hover::after {
+  width: 80%;
+}
+
+/* Active button highlight */
+.cute-nav button.active {
+  color: #7886C7;
+}
+
+.cute-nav button.active::after {
+  width: 60%;
+}
+
+/* Hover motion */
+.cute-nav button:hover {
+  color: #7886C7;
+  transform: translateY(-1px);
+}
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: #0073e6;
+  transition: color 0.3s;
+}
+
+.tooltip:hover {
+  color: #ff4081; /* changes link color on hover */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* show above link */
+  left: 50%;
+  margin-left: -100px;
+  transition: opacity 0.3s;
+  font-size: 0.9em;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
