@@ -1,29 +1,168 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Experience | Jing Fu</title>
+  <title>Jing Fu (付婧) | Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="images/favicon/new.PNG" type="image/x-icon">
   <link rel="stylesheet" href="stylesheet.css">
+
+  <style>
+    /* --- Experience layout --- */
+    .experience-container {
+      height: 550px;
+      overflow-y: scroll;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #A9B5DF #FEFAF6;
+    }
+
+    .experience-container::-webkit-scrollbar {
+      width: 10px;
+    }
+    .experience-container::-webkit-scrollbar-thumb {
+      background-color: #A9B5DF;
+      border-radius: 5px;
+    }
+    .experience-container::-webkit-scrollbar-track {
+      background-color: #FEFAF6;
+      border-radius: 5px;
+    }
+
+    .experience {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .experience img {
+      width: 40%;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    .experience-text {
+      width: 60%;
+      text-align: left;
+    }
+
+    @media (max-width: 850px) {
+      .experience {
+        flex-direction: column;
+        text-align: center;
+      }
+      .experience img {
+        width: 80%;
+      }
+      .experience-text {
+        width: 90%;
+      }
+      .experience-container {
+        height: auto;
+        overflow-y: visible;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <table>
-    <tr>
-      <td style="padding:5%;width:100%;">
-        <div class="cute-nav">
-          <a href="index.html">about</a>
-          <a href="projects.html">projects</a>
-          <a href="experience.html" class="active">experience</a>
-          <a href="contact.html">wanna know more?</a>
-        </div>
+    <tbody>
+      <tr>
+        <td style="text-align:center; padding-top:25px; padding-bottom:10px;">
+          <div class="cute-nav">
+            <button onclick="window.location.href='index.html'">about</button>
+            <button onclick="window.location.href='projects.html'">projects</button>
+            <button onclick="window.location.href='experience.html'" class="active">experience</button>
+            <button onclick="window.location.href='more.html'">wanna know more?</button>
+          </div>
+        </td>
+      </tr>
 
-        <h2>Experience</h2>
-        <p>Here’s a quick summary of what I’ve been up to 🌷</p>
-        <ul>
-          <li>Intern — Hospital Lab AI Project (UZH & ETH Zürich)</li>
-          <li>TA — People-Oriented Computing Course</li>
-        </ul>
-      </td>
-    </tr>
+      <tr>
+        <td style="padding:40px;">
+          <h1 class="name" style="text-align:center;">Experience</h1>
+          
+
+          <!-- Scrollable experience area -->
+          <div class="experience-container">
+
+            <!-- KSA -->
+            <div class="experience">
+              <img src="images/experience/ksa.png" alt="Aarau Kantonsspital">
+              <div class="experience-text">
+                <h2> Aarau Kantonsspital (KSA) — Data Science & AI Intern</h2>
+                <p><strong>Oct 2024 – Present | Aarau, Switzerland</strong></p>
+                <p>
+                  At KSA, I developed an <strong>LLM-based code mapping pipeline</strong> to connect hospital lab data with standardized LOINC codes.
+                  I worked with <strong>LangChain</strong> and <strong>Hugging Face</strong> models, iterating with medical experts to refine system accuracy.
+                  This role taught me the value of bridging technical models with real clinical needs.
+                </p>
+              </div>
+            </div>
+
+            <!-- TA -->
+            <div class="experience">
+              <img src="images/experience/ZAPC.png" alt="UZH ZPAC Lab">
+              <div class="experience-text">
+                <h2>Teaching Assistant — UZH ZPAC Lab</h2>
+                <p>Sep 2024 – Feb 2025 | Zürich, Switzerland</p>
+                <p>
+                  Assisted in the <strong>People-Oriented Computing</strong> course, helping students explore sustainability in HCI.
+                  Led a hands-on exercise session on sustainable interaction design and provided feedback to students’ reports.
+                  Teaching deepened my understanding of how people connect with technology.
+                </p>
+              </div>
+            </div>
+
+            <!-- FLRF -->
+            <div class="experience">
+              <img src="images/experience/2022_logo_flrf.png" alt="Family Larsson-Rosenquist Foundation">
+              <div class="experience-text">
+                <h2>Family Larsson-Rosenquist Foundation — Research Intern</h2>
+                <p>Mar 2024 – Jun 2024 | Frauenfeld, Switzerland</p>
+                <p>
+                  Worked on breastfeeding data visualization for public health.  
+                  I built interactive <strong>Power BI dashboards</strong> integrating WHO and UNESCO data and collaborated closely with researchers to improve usability.
+                  
+                </p>
+              </div>
+            </div>
+
+            <!-- KPMG -->
+            <div class="experience">
+              <img src="images/experience/kpmg.png" alt="KPMG Beijing">
+              <div class="experience-text">
+                <h2>KPMG — Financial Risk Management Intern</h2>
+                <p>Jun 2021 – Sep 2021 | Beijing, China</p>
+                <p>
+                  Collected and processed financial data using R, applied the <strong>Merton Model</strong> to estimate expected credit loss,
+                  and contributed to IFRS9 and CAS22 compliance reports.
+                  This was my first taste of applying quantitative models in a corporate setting.
+                </p>
+              </div>
+            </div>
+
+            <!-- Everbright -->
+            <div class="experience">
+              <img src="images/experience/bank.png" alt="China Everbright Bank">
+              <div class="experience-text">
+                <h2>China Everbright Bank — Risk Management Intern</h2>
+                <p>Jul 2020 – Aug 2020 | Shanghai, China</p>
+                <p>
+                  Supported the preparation of <strong>financial risk and early-warning reports</strong> for regulatory authorities.
+                  Created visual reports and dashboards summarizing quarterly trends.
+                  This experience sparked my early interest in data visualization for decision-making.
+                </p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </body>
 </html>

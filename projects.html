@@ -1,30 +1,158 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Projects | Jing Fu</title>
+  <title>Jing Fu (付婧) | Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="images/favicon/new.PNG" type="image/x-icon">
   <link rel="stylesheet" href="stylesheet.css">
+
+  <style>
+    /* --- Project layout --- */
+    .projects-container {
+      height: 550px; /* You can adjust this height */
+      overflow-y: scroll;
+      padding-right: 10px;
+      scrollbar-width: thin; /* for Firefox */
+      scrollbar-color: #A9B5DF #FEFAF6; /* thumb + track color */
+    }
+
+    /* For WebKit browsers */
+    .projects-container::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .projects-container::-webkit-scrollbar-thumb {
+      background-color: #A9B5DF;
+      border-radius: 5px;
+    }
+
+    .projects-container::-webkit-scrollbar-track {
+      background-color: #FEFAF6;
+      border-radius: 5px;
+    }
+
+    .project {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .project img {
+      width: 40%;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    .project-text {
+      width: 60%;
+      text-align: left;
+    }
+
+    @media (max-width: 850px) {
+      .project {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project img {
+        width: 80%;
+      }
+
+      .project-text {
+        width: 90%;
+      }
+
+      .projects-container {
+        height: auto; /* disable fixed height on small screens */
+        overflow-y: visible;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <table>
-    <tr>
-      <td style="padding:5%;width:100%;">
-        <div class="cute-nav">
-          <a href="index.html">about</a>
-          <a href="projects.html" class="active">projects</a>
-          <a href="experience.html">experience</a>
-          <a href="contact.html">wanna know more?</a>
-        </div>
+    <tbody>
+      <tr>
+        <td style="text-align:center; padding-top:25px; padding-bottom:10px;">
+          <div class="cute-nav">
+            <button onclick="window.location.href='index.html'">about</button>
+            <button onclick="window.location.href='projects.html'" class="active">projects</button>
+            <button onclick="window.location.href='experience.html'">experience</button>
+            <button onclick="window.location.href='more.html'">wanna know more?</button>
+          </div>
+        </td>
+      </tr>
 
-        <h2>Projects</h2>
-        <p>Here are some projects I’ve worked on recently 💻✨</p>
-        <ul>
-          <li>⚽ Soccer Effective Playing Time Analysis</li>
-          <li>🏥 LOINC Code Mapping using AI</li>
-          <li>🧠 Interactive Visualization for Healthcare Data</li>
-        </ul>
-      </td>
-    </tr>
+      <tr>
+        <td style="padding:40px;">
+          <h1 class="name" style="text-align:center;">Projects</h1>
+          <!-- Scrollable projects area -->
+          <div class="projects-container">
+
+            <!-- Example Project -->
+            <div class="project">
+              <img src="images/projects/sfl.png" alt="Soccer Analytics Project">
+              <div class="project-text">
+                <h2>Master Thesis: Effective Playing Time Analysis in Soccer Matches</h2>
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="images/experience/2022_logo_flrf.png" alt="Breastfeeding AI Project">
+              <div class="project-text">
+                <h2>NLP-Driven Insights for Breastfeeding Support</h2>
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="images/experience/ZAPC.png" alt="Blood Glucose Visualization">
+              <div class="project-text">
+                <h2>Blood Glucose Prediction Visualization</h2>
+                <p>
+                  Conducted a user study at UZH to explore how visual design influences
+                  perception of blood glucose predictions. I ran surveys, analyzed data in Python,
+                  and helped design more accessible health dashboards.
+                </p>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="images/projects/zoom_new_df_diz.png" alt="F1 Network Analysis">
+              <div class="project-text">
+                <h2>Formula 1 Collisions Network Analysis</h2>
+                <p>
+                  I explored Formula 1 race collision data using network analysis tools like Gephi and NetworkX,
+                  finding fascinating links between driver interactions across seasons.
+                </p>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="images/projects/meditation.png" alt="Meditation Debugging">
+              <div class="project-text">
+                <h2>Meditation and Debugging Efficiency</h2>
+                <p>
+                  A psychology-meets-coding experiment! I tested how brief mindfulness sessions
+                  affected debugging efficiency. The process involved designing experiments,
+                  analyzing response data, and writing a report with behavioral insights.
+                </p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </body>
 </html>
