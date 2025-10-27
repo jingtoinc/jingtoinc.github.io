@@ -1,128 +1,210 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>Jing Fu(付婧)</title>
+    <meta charset="UTF-8">
+    <title>Jing Fu (付婧)</title>
 
     <meta name="author" content="Jing Fu">
     <meta name="description" content="Personal website of Jing Fu (付婧), researcher in data science and human-computer interaction.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/new.PNG" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <style>
+      /* Match the responsive container behavior of projects.html */
+      body {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        background-color: #A9B5DF;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        line-height: 1.6;
+      }
+
+      table {
+        width: 100%;
+        max-width: 1210px;
+        background-color: #FEFAF6;
+        border-radius: 10px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        height: 90vh;
+        overflow: hidden;
+      }
+
+      .scroll-area {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 10px;
+      }
+
+      .cute-nav-container {
+        position: sticky;
+        top: 0;
+        background-color: #FEFAF6;
+        z-index: 10;
+        padding-top: 25px;
+        padding-bottom: 10px;
+      }
+
+      td {
+        padding: 5%;
+        vertical-align: top;
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 850px) {
+        body {
+          align-items: flex-start;
+          height: auto;
+          overflow: auto;
+        }
+
+        table {
+          height: auto;
+          max-height: none;
+          width: 95%;
+        }
+
+        tr {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        td {
+          width: 100% !important;
+          text-align: center;
+        }
+
+        img[alt="Profile photo"] {
+          width: 100px !important;
+          height: 100px !important;
+          border-radius: 50%;
+        }
+
+        h2, h3, h4, p {
+          text-align: center;
+        }
+
+        .cute-nav {
+          flex-wrap: wrap;
+          gap: 15px;
+          justify-content: center;
+        }
+
+        .cute-nav button {
+          font-size: 16px;
+          padding: 5px 8px;
+        }
+      }
+    </style>
   </head>
 
- <body>
-
-      <table style="width:100%;max-width:1210px;border:0;border-spacing:0;margin:auto;">
-        <tbody>
-          <tr>
-            <td colspan="2" style="text-align:center; padding-top:25px; padding-bottom:10px;">
-              <div class="cute-nav">
-                <button onclick="window.location.href='index.html'" class="active">about</button>
-                <button onclick="window.location.href='projects.html'">projects</button>
-                <button onclick="window.location.href='experiences.html'">experience</button>
-                <button onclick="window.location.href='more.html'">wanna know more?</button>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td style="padding:0;">
+            <div class="scroll-area">
+              <!-- Navigation -->
+              <div class="cute-nav-container">
+                <div class="cute-nav">
+                  <button onclick="window.location.href='index.html'" class="active">about</button>
+                  <button onclick="window.location.href='projects.html'">projects</button>
+                  <button onclick="window.location.href='experiences.html'">experience</button>
+                  <button onclick="window.location.href='more.html'">wanna know more?</button>
+                </div>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <!-- Left column: name + photo -->
-            <td style="padding:2.5%;width:40%;vertical-align:middle;text-align:center;">
-              
-              <h1 class="name" style="text-align:center;margin-bottom:5px;">
-                Jing Fu | 付婧
-              </h1>
-              <p style="text-align:center;">
-                <strong>She/her</strong>
-              </p>
-              <h4 style="text-align:center;font-weight:100;margin-top:5px;margin-bottom:30px;">
-                Master’s Student in Data Science @ UZH
-              </h4>
 
-              <a href="images/prof.JPG">
-                <img src="images/prof.JPG" alt="Profile photo"
-                    style="width:60%;max-width:150px;border-radius:70%;object-fit:cover;
-                            box-shadow:0 0 8px rgba(0,0,0,0.1);margin-bottom:10px;">
-              </a>
+              <!-- Main Content -->
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;padding:3% 5%;gap:30px;">
 
-              <h3 style="margin-top:10px;">
-                <a href="mailto:jing.fu@uzh.ch">jing.fu@uzh.ch</a>
-              </h3>
-              
-              
-              <h3 style="margin-top:10px;"></p>
-                <a href="data/Jing_Fu_CV_2025.pdf">CV</a> /&nbsp;
-                <a href="https://linkedin.com/in/jing-fu-400584199">LinkedIn</a> /&nbsp;
-                <a href="https://github.com/jingtoinc">GitHub</a>
-              </h3>
-            </td>
+                <!-- Left column -->
+                <div style="flex:1;min-width:250px;max-width:350px;text-align:center;">
+                  <h1 class="name" style="margin-bottom:5px;">Jing Fu | 付婧</h1>
+                  <p><strong>She/her</strong></p>
+                  <h4 style="font-weight:100;margin-top:5px;margin-bottom:30px;">
+                    Master’s Student in Data Science @ UZH
+                  </h4>
 
-            <!-- Right column: About Me -->
-            <td style="padding:5%;width:60%;">
-              <!-- Cute Navigation Bar (inside gray area) -->
-
-            
-
-              <h2>About Me</h2>
-            
-                My name is Jing Fu (付婧), prounouced as <strong>[tɕiŋ fu]</strong> in IPA and <strong>Jìng Fù </strong> in Pinyin.
-                I’m a master’s student in Data Science at <a href="https://www.uzh.ch/en.html" target="_blank">University of Zurich</a>, currently writing my master thesis at
-                <a href="https://sn.ethz.ch/" target="_blank">SN Lab</a> at ETH, working under Prof. Ulrik Brandes on the topic of <strong>Soccer Analytics</strong>. Before starting graduate school, I completed my
-                Bachelor Degree in Statistics at SWUFE <a href="https://e.swufe.edu.cn/" target="_blank">(Southwestern University of Finance and Economics).</a> 
-              </p>
-              
-              <p>
-                My research interests lie in
-                
-                  <ul style="margin-top:-10px; margin-bottom:10px;">
-                    <strong><li>Human–Computer Interaction (HCI)</li></strong>
-                    <strong> <li>Data Visualization</li></strong>
-                    <li>The intersection of HCI and Visualization in the domains of <strong>Sports and Healthcare</strong></li>
-                    <strong><li>HCI in AI, inspired by <a href="https://sites.google.com/site/dmrussell/" target="_blank">Dan Russell</a></li></strong>
-                    
-                  </ul>
-                </strong>
-                Previously, I worked on LOINC code mapping project using LLM at<a href="https://www.ksa.ch/de/kantonsspital-aarau/aufenthalt-und-besuch" target="_blank"> KSA</a>
-                to support medical data mapping and decision-making.
-              </p>
-    
-              <p>
-                <strong>A bit more about me:</strong>
-                Love climbing,like hiking,enjoy skiing. 
-                Love Pho ever. Occasional couch potato 
-                (
-                  <a href="https://www.imdb.com/de/title/tt1041829/?ref_=nv_sr_srsg_2_tt_6_nm_2_in_0_q_the%2520pro" class="tooltip" target="_blank">1
-                  <span class="tooltiptext">My one time fav. Make rom-com great again!</span>
-                  </a>,
-                  <a href="https://www.imdb.com/de/title/tt31938062/" class="tooltip" target="_blank">2
-                  <span class="tooltiptext">Best series 2025 imo</span>
-                  </a>,
-                  <a href="https://www.imdb.com/de/title/tt26230388/" class="tooltip" target="_blank">3
-                  <span class="tooltiptext">Everyone needs to watch this</span>
+                  <a href="images/prof.JPG">
+                    <img src="images/prof.JPG" alt="Profile photo"
+                        style="width:60%;max-width:150px;border-radius:70%;object-fit:cover;
+                                box-shadow:0 0 8px rgba(0,0,0,0.1);margin-bottom:10px;">
                   </a>
-                ).
-                Lifetime bookworm(<a href="https://www.goodreads.com/book/show/222063490" class="tooltip" target="_blank">1
-                  <span class="tooltiptext">one of my fav from one of my fav writer</span>
-                  </a>,
-                  <a href="https://www.goodreads.com/book/show/9717.The_Unbearable_Lightness_of_Being" class="tooltip" target="_blank">2
-                  <span class="tooltiptext">one of my fav from one of my fav writer</span>
-                  </a>,
-                  <a href="https://www.goodreads.com/book/show/4934.The_Brothers_Karamazov" class="tooltip" target="_blank">3
-                  <span class="tooltiptext">one of my fav</span>
-                  </a>,<a href="https://www.goodreads.com/book/show/198902277-the-wedding-people" class="tooltip" target="_blank">4
-                  <span class="tooltiptext">Recent fav</span>
-                  </a>). 
-              </p>
-                </ul>
-              
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+                  <h3><a href="mailto:jing.fu@uzh.ch">jing.fu@uzh.ch</a></h3>
+                  <h3>
+                    <a href="data/Jing_Fu_CV_2025.pdf">CV</a> /&nbsp;
+                    <a href="https://linkedin.com/in/jing-fu-400584199">LinkedIn</a> /&nbsp;
+                    <a href="https://github.com/jingtoinc">GitHub</a>
+                  </h3>
+                </div>
+
+                <!-- Right column -->
+                <div style="flex:2;min-width:300px;max-width:700px;text-align:left;">
+                  <h2>About Me</h2>
+                  <p>
+                    My name is Jing Fu (付婧), pronounced as <strong>[tɕiŋ fu]</strong> in IPA and <strong>Jìng Fù</strong> in Pinyin.
+                    I’m a master’s student in Data Science at 
+                    <a href="https://www.uzh.ch/en.html" target="_blank">University of Zurich</a>, currently writing my master thesis at 
+                    <a href="https://sn.ethz.ch/" target="_blank">SN Lab</a> at ETH, working under Prof. Ulrik Brandes on the topic of 
+                    <strong>Soccer Analytics</strong>. Before graduate school, I completed my Bachelor Degree in Statistics at 
+                    <a href="https://e.swufe.edu.cn/" target="_blank">SWUFE</a>.
+                  </p>
+
+                  <p>
+                    My research interests lie in:
+                    <ul style="margin-top:-10px; margin-bottom:10px;">
+                      <strong><li>Human–Computer Interaction (HCI)</li></strong>
+                      <strong><li>Data Visualization</li></strong>
+                      <li>The intersection of HCI and Visualization in <strong>Sports and Healthcare</strong></li>
+                      <strong><li>HCI in AI, inspired by <a href="https://sites.google.com/site/dmrussell/" target="_blank">Dan Russell</a></li></strong>
+                    </ul>
+                    Previously, I worked on an LLM-based LOINC code mapping project at 
+                    <a href="https://www.ksa.ch/de/kantonsspital-aarau/aufenthalt-und-besuch" target="_blank">KSA</a>, 
+                    supporting medical data mapping and decision-making.
+                  </p>
+
+                  <p>
+                    <strong>A bit more about me:</strong>
+                    Love climbing, like hiking, enjoy skiing. Love Pho ever. Occasional couch potato 
+                    (
+                      <a href="https://www.imdb.com/de/title/tt1041829/" class="tooltip" target="_blank">1
+                        <span class="tooltiptext">My one time fav. Make rom-com great again!</span>
+                      </a>,
+                      <a href="https://www.imdb.com/de/title/tt31938062/" class="tooltip" target="_blank">2
+                        <span class="tooltiptext">Best series 2025 imo</span>
+                      </a>,
+                      <a href="https://www.imdb.com/de/title/tt26230388/" class="tooltip" target="_blank">3
+                        <span class="tooltiptext">Everyone needs to watch this</span>
+                      </a>
+                    ).
+                    Lifetime bookworm (
+                      <a href="https://www.goodreads.com/book/show/222063490" class="tooltip" target="_blank">1
+                        <span class="tooltiptext">one of my fav from one of my fav writer</span>
+                      </a>,
+                      <a href="https://www.goodreads.com/book/show/9717.The_Unbearable_Lightness_of_Being" class="tooltip" target="_blank">2
+                        <span class="tooltiptext">one of my fav from one of my fav writer</span>
+                      </a>,
+                      <a href="https://www.goodreads.com/book/show/4934.The_Brothers_Karamazov" class="tooltip" target="_blank">3
+                        <span class="tooltiptext">one of my fav</span>
+                      </a>,
+                      <a href="https://www.goodreads.com/book/show/198902277-the-wedding-people" class="tooltip" target="_blank">4
+                        <span class="tooltiptext">Recent fav</span>
+                      </a>).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
-
-               
