@@ -318,3 +318,79 @@ td:last-child {
     overflow: hidden;
   }
 }
+
+/* ---------------------------------------------
+   Mobile fixes for "more.html" slider
+----------------------------------------------*/
+@media (max-width: 900px) {
+  .slider {
+    max-width: 95%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .slides {
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .slide-item {
+    flex: 0 0 50%; /* Show 2 slides at a time for tablets */
+    padding: 0 4px;
+  }
+
+  .slides img {
+    height: 280px;
+    object-fit: cover;
+  }
+
+  .prev, .next {
+    font-size: 22px;
+    top: 45%;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-item {
+    flex: 0 0 90%; /* Show 1 image at a time on mobile */
+  }
+
+  .slides img {
+    height: 220px;
+  }
+
+  .prev, .next {
+    font-size: 18px;
+    padding: 4px 8px;
+    top: 40%;
+  }
+
+  .slider {
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .slide-item div {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  h1.name {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .cute-nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
