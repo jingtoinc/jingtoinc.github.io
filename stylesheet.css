@@ -401,3 +401,52 @@ td:last-child {
     padding: 10px 0 40px; /* adds bottom breathing room for scrolling */
   }
 }
+
+/* Make the purple background fixed and center the gray box */
+body {
+  background-color: #A9B5DF;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent full-page scroll */
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+/* The inner scroll area (gray box content) */
+.scroll-area {
+  position: relative;
+  height: 90vh; /* Matches index.html gray box */
+  overflow-y: auto; /* Only this area scrolls */
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+/* Keep nav visible at top inside the box */
+.cute-nav-container {
+  position: sticky;
+  top: 0;
+  background-color: #FEFAF6; /* same as gray box */
+  z-index: 5;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/* Make sure page content has some breathing room */
+.page-content {
+  padding: 0 5% 30px;
+}
+
+/* Responsive nav (so it doesn’t overflow on small screens) */
+@media (max-width: 600px) {
+  .cute-nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .scroll-area {
+    height: auto;
+    max-height: 90vh;
+  }
+}

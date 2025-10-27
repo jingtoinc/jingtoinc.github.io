@@ -8,39 +8,57 @@
   <link rel="stylesheet" href="stylesheet.css">
 
   <style>
-    /* --- Page wrapper --- */
-    .page-wrapper {
-      width: 90%;
-      max-width: 1200px;
+    /* --- Global layout (consistent with index.html) --- */
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      background-color: #A9B5DF;  
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;              /* fix viewport height */
+      overflow: hidden;           /* prevent background scroll */
+      line-height: 1.6;
+    }
+
+    /* --- Gray box (table) --- */
+    table {
+      width: 100%;
+      max-width: 1210px;
+      border: 0;
+      border-spacing: 0;
       margin: auto;
       background-color: #FEFAF6;
       border-radius: 10px;
       box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-      padding: 20px;
+      height: 90vh; /* same height as index */
+      overflow: hidden;
+    }
+
+    /* --- Scrollable content inside gray box --- */
+    .scroll-area {
+      position: relative;
+      height: 100%;
+      overflow-y: auto; /* scroll only inside gray box */
+      overflow-x: hidden;
+      border-radius: 10px;
+    }
+
+    /* --- Sticky navigation bar inside the box --- */
+    .cute-nav-container {
+      position: sticky;
+      top: 0;
+      background-color: #FEFAF6;
+      z-index: 10;
+      padding-top: 25px;
+      padding-bottom: 10px;
     }
 
     /* --- Project layout --- */
     .projects-container {
-      max-height: 550px;
-      overflow-y: auto;
-      padding-right: 10px;
-      scrollbar-width: thin;
-      scrollbar-color: #A9B5DF #FEFAF6;
-    }
-
-    /* For WebKit browsers */
-    .projects-container::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    .projects-container::-webkit-scrollbar-thumb {
-      background-color: #A9B5DF;
-      border-radius: 5px;
-    }
-
-    .projects-container::-webkit-scrollbar-track {
-      background-color: #FEFAF6;
-      border-radius: 5px;
+      padding: 5%;
+      max-height: none;
     }
 
     .project {
@@ -66,6 +84,22 @@
 
     /* --- Responsive adjustments --- */
     @media (max-width: 850px) {
+      body {
+        align-items: flex-start;
+        height: auto;
+        overflow: auto;
+      }
+
+      table {
+        height: auto;
+        max-height: none;
+      }
+
+      .scroll-area {
+        height: auto;
+        max-height: none;
+      }
+
       .project {
         flex-direction: column;
         text-align: center;
@@ -80,96 +114,106 @@
         width: 90%;
         text-align: center;
       }
+    }
+
+    @media (max-width: 600px) {
+      .cute-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .cute-nav button {
+        font-size: 16px !important;
+        padding: 5px 8px;
+      }
 
       .projects-container {
-        max-height: none;
-        overflow-y: visible;
+        padding: 20px;
       }
     }
   </style>
 </head>
 
 <body>
-  <table style="width:100%;max-width:1210px;border:0;border-spacing:0;margin:auto;">
+  <table>
     <tbody>
       <tr>
-        <td style="text-align:center; padding-top:25px; padding-bottom:10px;">
-          <div class="cute-nav">
-            <button onclick="window.location.href='index.html'">about</button>
-            <button onclick="window.location.href='projects.html'" class="active">projects</button>
-            <button onclick="window.location.href='experiences.html'">experience</button>
-            <button onclick="window.location.href='more.html'">wanna know more?</button>
-          </div>
-        </td>
-      </tr>
+        <td style="padding:0;vertical-align:top;">
+          <div class="scroll-area">
 
-      <tr>
-        <td style="padding:5%;">
-          <h1 class="name" style="text-align:center;">Projects</h1>
-
-          <div class="projects-container">
-
-            <!-- Project 1 -->
-            <div class="project">
-              <img src="images/projects/sfl.png" alt="Soccer Analytics Project">
-              <div class="project-text">
-                <h2>Master Thesis: Effective Playing Time Analysis in Soccer Matches</h2>
-                <p>
-                  
-                </p>
+            <!-- Navigation (fixed inside gray box) -->
+            <div class="cute-nav-container">
+              <div class="cute-nav">
+                <button onclick="window.location.href='index.html'">about</button>
+                <button onclick="window.location.href='projects.html'" class="active">projects</button>
+                <button onclick="window.location.href='experiences.html'">experience</button>
+                <button onclick="window.location.href='more.html'">wanna know more?</button>
               </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project">
-              <img src="images/experience/2022_logo_flrf.png" alt="Breastfeeding AI Project">
-              <div class="project-text">
-                <h2>NLP-Driven Insights for Breastfeeding Support</h2>
-                <p>
-                  
-                </p>
-              </div>
-            </div>
+            <!-- Scrollable main content -->
+            <div class="projects-container">
+              
 
-            <!-- Project 3 -->
-            <div class="project">
-              <img src="images/experience/ZAPC.png" alt="Blood Glucose Visualization">
-              <div class="project-text">
-                <h2>Blood Glucose Prediction Visualization</h2>
-                <p>
-                  Conducted a user study at <strong>UZH</strong> exploring how visual design influences perception of blood glucose predictions.
-                  I ran participant surveys, analyzed results in Python, and proposed visualization improvements for personalized health monitoring.
-                </p>
+              <!-- Project 1 -->
+              <div class="project">
+                <img src="images/projects/sfl.png" alt="Soccer Analytics Project">
+                <div class="project-text">
+                  <h2>Master Thesis: Effective Playing Time Analysis in Soccer Matches</h2>
+                  <p></p>
+                </div>
               </div>
-            </div>
 
-            <!-- Project 4 -->
-            <div class="project">
-              <img src="images/projects/zoom_new_df_diz.png" alt="F1 Network Analysis">
-              <div class="project-text">
-                <h2>Formula 1 Collisions Network Analysis</h2>
-                <p>
-                  A personal data-viz project exploring F1 collisions using <strong>NetworkX</strong> and <strong>Gephi</strong>.
-                  Built interactive graphs showing driver relationships, collision frequencies, and race-season dynamics — where chaos meets structure.
-                </p>
+              <!-- Project 2 -->
+              <div class="project">
+                <img src="images/experience/2022_logo_flrf.png" alt="Breastfeeding AI Project">
+                <div class="project-text">
+                  <h2>NLP-Driven Insights for Breastfeeding Support</h2>
+                  <p></p>
+                </div>
               </div>
-            </div>
 
-            <!-- Project 5 -->
-            <div class="project">
-              <img src="images/projects/meditation.png" alt="Meditation Debugging">
-              <div class="project-text">
-                <h2>Meditation and Debugging Efficiency</h2>
-                <p>
-                  An experiment testing how brief mindfulness sessions affect debugging focus.
-                  Designed the study, gathered behavioral data, and wrote an analysis report linking reflection, attention, and problem-solving flow.
-                </p>
+              <!-- Project 3 -->
+              <div class="project">
+                <img src="images/experience/ZAPC.png" alt="Blood Glucose Visualization">
+                <div class="project-text">
+                  <h2>Blood Glucose Prediction Visualization</h2>
+                  <p>
+                    Conducted a user study at <strong>UZH</strong> exploring how visual design influences perception of blood glucose predictions.
+                    I ran participant surveys, analyzed results in Python, and proposed visualization improvements for personalized health monitoring.
+                  </p>
+                </div>
               </div>
-            </div>
-            
-          </div>
+
+              <!-- Project 4 -->
+              <div class="project">
+                <img src="images/projects/zoom_new_df_diz.png" alt="F1 Network Analysis">
+                <div class="project-text">
+                  <h2>Formula 1 Collisions Network Analysis</h2>
+                  <p>
+                    A personal data-viz project exploring F1 collisions using <strong>NetworkX</strong> and <strong>Gephi</strong>.
+                    Built interactive graphs showing driver relationships, collision frequencies, and race-season dynamics — where chaos meets structure.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Project 5 -->
+              <div class="project">
+                <img src="images/projects/meditation.png" alt="Meditation Debugging">
+                <div class="project-text">
+                  <h2>Meditation and Debugging Efficiency</h2>
+                  <p>
+                    An experiment testing how brief mindfulness sessions affect debugging focus.
+                    Designed the study, gathered behavioral data, and wrote an analysis report linking reflection, attention, and problem-solving flow.
+                  </p>
+                </div>
+              </div>
+            </div> <!-- end projects-container -->
+          </div> <!-- end scroll-area -->
         </td>
       </tr>
     </tbody>
   </table>
 </body>
+</html>

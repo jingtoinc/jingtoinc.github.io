@@ -8,25 +8,56 @@
   <link rel="stylesheet" href="stylesheet.css">
 
   <style>
-    /* --- Experience layout --- */
-    .experience-container {
-      height: 550px;
-      overflow-y: scroll;
-      padding-right: 10px;
-      scrollbar-width: thin;
-      scrollbar-color: #A9B5DF #FEFAF6;
+    /* --- Global layout (same as index & projects) --- */
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      background-color: #A9B5DF;  
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;             /* fix viewport height */
+      overflow: hidden;          /* disable full-page scroll */
+      line-height: 1.6;
     }
 
-    .experience-container::-webkit-scrollbar {
-      width: 10px;
-    }
-    .experience-container::-webkit-scrollbar-thumb {
-      background-color: #A9B5DF;
-      border-radius: 5px;
-    }
-    .experience-container::-webkit-scrollbar-track {
+    /* --- Gray box container --- */
+    table {
+      width: 100%;
+      max-width: 1210px;
+      border: 0;
+      border-spacing: 0;
+      margin: auto;
       background-color: #FEFAF6;
-      border-radius: 5px;
+      border-radius: 10px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+      height: 90vh;              /* consistent with other pages */
+      overflow: hidden;
+    }
+
+    /* --- Scrollable area inside gray box --- */
+    .scroll-area {
+      position: relative;
+      height: 100%;
+      overflow-y: auto;          /* scrolls only inside gray box */
+      overflow-x: hidden;
+      border-radius: 10px;
+    }
+
+    /* --- Sticky navigation inside the gray box --- */
+    .cute-nav-container {
+      position: sticky;
+      top: 0;
+      background-color: #FEFAF6;
+      z-index: 10;
+      padding-top: 25px;
+      padding-bottom: 10px;
+    }
+
+    /* --- Experience section layout --- */
+    .experience-container {
+      padding: 5%;
     }
 
     .experience {
@@ -49,20 +80,61 @@
       text-align: left;
     }
 
+    /* --- Scrollable area inside gray box --- */
+    .scroll-area {
+      position: relative;
+      height: 100%;
+      overflow-y: auto; /* only inside gray box */
+      overflow-x: hidden;
+      border-radius: 10px;
+    }
+
+    /* --- Responsive adjustments --- */
     @media (max-width: 850px) {
+      body {
+        align-items: flex-start;
+        height: auto;
+        overflow: auto;
+      }
+
+      table {
+        height: auto;
+        max-height: none;
+      }
+
+      .scroll-area {
+        height: auto;
+        max-height: none;
+      }
+
       .experience {
         flex-direction: column;
         text-align: center;
       }
+
       .experience img {
         width: 80%;
       }
+
       .experience-text {
         width: 90%;
       }
+    }
+
+    @media (max-width: 600px) {
+      .cute-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .cute-nav button {
+        font-size: 16px !important;
+        padding: 5px 8px;
+      }
+
       .experience-container {
-        height: auto;
-        overflow-y: visible;
+        padding: 20px;
       }
     }
   </style>
@@ -72,94 +144,92 @@
   <table>
     <tbody>
       <tr>
-        <td style="text-align:center; padding-top:25px; padding-bottom:10px;">
-          <div class="cute-nav">
-            <button onclick="window.location.href='index.html'">about</button>
-            <button onclick="window.location.href='projects.html'">projects</button>
-            <button onclick="window.location.href='experiences.html'" class="active">experience</button>
-            <button onclick="window.location.href='more.html'">wanna know more?</button>
-          </div>
-        </td>
-      </tr>
+        <td style="padding:0;vertical-align:top;">
+          <div class="scroll-area">
 
-      <tr>
-        <td style="padding:5%;">
-          <h1 class="name" style="text-align:center;">Experience</h1>
-          
-
-          <!-- Scrollable experience area -->
-          <div class="experience-container">
-
-            <!-- KSA -->
-            <div class="experience">
-              <img src="images/experience/ksa.png" alt="Aarau Kantonsspital">
-              <div class="experience-text">
-                <h2> Aarau Kantonsspital (KSA) — Data Science & AI Intern</h2>
-                <p><strong>Oct 2024 – Present | Aarau, Switzerland</strong></p>
-                <p>
-                  At KSA, I developed an <strong>LLM-based code mapping pipeline</strong> to connect hospital lab data with standardized LOINC codes.
-                  I worked with <strong>LangChain</strong> and <strong>Hugging Face</strong> models, iterating with medical experts to refine system accuracy.
-                  This role taught me the value of bridging technical models with real clinical needs.
-                </p>
+            <!-- Navigation (fixed inside gray box) -->
+            <div class="cute-nav-container">
+              <div class="cute-nav">
+                <button onclick="window.location.href='index.html'">about</button>
+                <button onclick="window.location.href='projects.html'">projects</button>
+                <button onclick="window.location.href='experiences.html'" class="active">experience</button>
+                <button onclick="window.location.href='more.html'">wanna know more?</button>
               </div>
             </div>
 
-            <!-- TA -->
-            <div class="experience">
-              <img src="images/experience/ZAPC.png" alt="UZH ZPAC Lab">
-              <div class="experience-text">
-                <h2>Teaching Assistant — UZH ZPAC Lab</h2>
-                <p>Sep 2024 – Feb 2025 | Zürich, Switzerland</p>
-                <p>
-                  Assisted in the <strong>People-Oriented Computing</strong> course, helping students explore sustainability in HCI.
-                  Led a hands-on exercise session on sustainable interaction design and provided feedback to students’ reports.
-                  Teaching deepened my understanding of how people connect with technology.
-                </p>
-              </div>
-            </div>
+            <!-- Scrollable main content -->
+            <div class="experience-container">
 
-            <!-- FLRF -->
-            <div class="experience">
-              <img src="images/experience/2022_logo_flrf.png" alt="Family Larsson-Rosenquist Foundation">
-              <div class="experience-text">
-                <h2>Family Larsson-Rosenquist Foundation — Research Intern</h2>
-                <p>Mar 2024 – Jun 2024 | Frauenfeld, Switzerland</p>
-                <p>
-                  Worked on breastfeeding data visualization for public health.  
-                  I built interactive <strong>Power BI dashboards</strong> integrating WHO and UNESCO data and collaborated closely with researchers to improve usability.
-                  
-                </p>
+              <!-- KSA -->
+              <div class="experience">
+                <img src="images/experience/ksa.png" alt="Aarau Kantonsspital">
+                <div class="experience-text">
+                  <h2>Aarau Kantonsspital (KSA) — Data Science & AI Intern</h2>
+                  <p><strong>Oct 2024 – Present | Aarau, Switzerland</strong></p>
+                  <p>
+                    At KSA, I developed an <strong>LLM-based code mapping pipeline</strong> to connect hospital lab data with standardized LOINC codes.
+                    I worked with <strong>LangChain</strong> and <strong>Hugging Face</strong> models, iterating with medical experts to refine system accuracy.
+                    This role taught me the value of bridging technical models with real clinical needs.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <!-- KPMG -->
-            <div class="experience">
-              <img src="images/experience/kpmg.png" alt="KPMG Beijing">
-              <div class="experience-text">
-                <h2>KPMG — Financial Risk Management Intern</h2>
-                <p>Jun 2021 – Sep 2021 | Beijing, China</p>
-                <p>
-                  Collected and processed financial data using R, applied the <strong>Merton Model</strong> to estimate expected credit loss,
-                  and contributed to IFRS9 and CAS22 compliance reports.
-                  This was my first taste of applying quantitative models in a corporate setting.
-                </p>
+              <!-- TA -->
+              <div class="experience">
+                <img src="images/experience/ZAPC.png" alt="UZH ZPAC Lab">
+                <div class="experience-text">
+                  <h2>Teaching Assistant — UZH ZPAC Lab</h2>
+                  <p><strong>Sep 2024 – Feb 2025 | Zürich, Switzerland</strong></p>
+                  <p>
+                    Assisted in the <strong>People-Oriented Computing</strong> course, helping students explore sustainability in HCI.
+                    Led a hands-on exercise session on sustainable interaction design and provided feedback to students’ reports.
+                    Teaching deepened my understanding of how people connect with technology.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <!-- Everbright -->
-            <div class="experience">
-              <img src="images/experience/bank.png" alt="China Everbright Bank">
-              <div class="experience-text">
-                <h2>China Everbright Bank — Risk Management Intern</h2>
-                <p>Jul 2020 – Aug 2020 | Shanghai, China</p>
-                <p>
-                  Supported the preparation of <strong>financial risk and early-warning reports</strong> for regulatory authorities.
-                  Created visual reports and dashboards summarizing quarterly trends.
-                  This experience sparked my early interest in data visualization for decision-making.
-                </p>
+              <!-- FLRF -->
+              <div class="experience">
+                <img src="images/experience/2022_logo_flrf.png" alt="Family Larsson-Rosenquist Foundation">
+                <div class="experience-text">
+                  <h2>Family Larsson-Rosenquist Foundation — Research Intern</h2>
+                  <p><strong>Mar 2024 – Jun 2024 | Frauenfeld, Switzerland</strong></p>
+                  <p>
+                    Worked on breastfeeding data visualization for public health.  
+                    I built interactive <strong>Power BI dashboards</strong> integrating WHO and UNESCO data and collaborated closely with researchers to improve usability.
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
+
+              <!-- KPMG -->
+              <div class="experience">
+                <img src="images/experience/kpmg.png" alt="KPMG Beijing">
+                <div class="experience-text">
+                  <h2>KPMG — Financial Risk Management Intern</h2>
+                  <p><strong>Jun 2021 – Sep 2021 | Beijing, China</strong></p>
+                  <p>
+                    Collected and processed financial data using R, applied the <strong>Merton Model</strong> to estimate expected credit loss,
+                    and contributed to IFRS9 and CAS22 compliance reports.
+                    This was my first taste of applying quantitative models in a corporate setting.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Everbright -->
+              <div class="experience">
+                <img src="images/experience/bank.png" alt="China Everbright Bank">
+                <div class="experience-text">
+                  <h2>China Everbright Bank — Risk Management Intern</h2>
+                  <p><strong>Jul 2020 – Aug 2020 | Shanghai, China</strong></p>
+                  <p>
+                    Supported the preparation of <strong>financial risk and early-warning reports</strong> for regulatory authorities.
+                    Created visual reports and dashboards summarizing quarterly trends.
+                    This experience sparked my early interest in data visualization for decision-making.
+                  </p>
+                </div>
+              </div>
+            </div><!-- end experience-container -->
+          </div><!-- end scroll-area -->
         </td>
       </tr>
     </tbody>
