@@ -8,13 +8,24 @@
   <link rel="stylesheet" href="stylesheet.css">
 
   <style>
+    /* --- Page wrapper --- */
+    .page-wrapper {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      background-color: #FEFAF6;
+      border-radius: 10px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
     /* --- Project layout --- */
     .projects-container {
-      height: 550px; /* You can adjust this height */
-      overflow-y: scroll;
+      max-height: 550px;
+      overflow-y: auto;
       padding-right: 10px;
-      scrollbar-width: thin; /* for Firefox */
-      scrollbar-color: #A9B5DF #FEFAF6; /* thumb + track color */
+      scrollbar-width: thin;
+      scrollbar-color: #A9B5DF #FEFAF6;
     }
 
     /* For WebKit browsers */
@@ -41,7 +52,8 @@
 
     .project img {
       width: 40%;
-      max-width: 300px;
+      max-width: 320px;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       object-fit: cover;
@@ -52,6 +64,7 @@
       text-align: left;
     }
 
+    /* --- Responsive adjustments --- */
     @media (max-width: 850px) {
       .project {
         flex-direction: column;
@@ -60,14 +73,16 @@
 
       .project img {
         width: 80%;
+        max-width: none;
       }
 
       .project-text {
         width: 90%;
+        text-align: center;
       }
 
       .projects-container {
-        height: auto; /* disable fixed height on small screens */
+        max-height: none;
         overflow-y: visible;
       }
     }
@@ -75,84 +90,82 @@
 </head>
 
 <body>
-  <table>
-    <tbody>
-      <tr>
-        <td style="text-align:center; padding-top:25px; padding-bottom:10px;">
-          <div class="cute-nav">
-            <button onclick="window.location.href='index.html'">about</button>
-            <button onclick="window.location.href='projects.html'" class="active">projects</button>
-            <button onclick="window.location.href='experiences.html'">experience</button>
-            <button onclick="window.location.href='more.html'">wanna know more?</button>
-          </div>
-        </td>
-      </tr>
+  <div class="page-wrapper">
 
-      <tr>
-        <td style="padding:40px;">
-          <h1 class="name" style="text-align:center;">Projects</h1>
-          <!-- Scrollable projects area -->
-          <div class="projects-container">
+    <!-- Navigation -->
+    <div style="text-align:center; padding-top:25px; padding-bottom:10px;">
+      <div class="cute-nav">
+        <button onclick="window.location.href='index.html'">about</button>
+        <button onclick="window.location.href='projects.html'" class="active">projects</button>
+        <button onclick="window.location.href='experience.html'">experience</button>
+        <button onclick="window.location.href='more.html'">wanna know more?</button>
+      </div>
+    </div>
 
-            <!-- Example Project -->
-            <div class="project">
-              <img src="images/projects/sfl.png" alt="Soccer Analytics Project">
-              <div class="project-text">
-                <h2>Master Thesis: Effective Playing Time Analysis in Soccer Matches</h2>
-                <p>
-                  
-                </p>
-              </div>
-            </div>
+    <!-- Page Content -->
+    <h1 class="name" style="text-align:center;">Projects</h1>
+    
+    <div class="projects-container">
 
-            <div class="project">
-              <img src="images/experience/2022_logo_flrf.png" alt="Breastfeeding AI Project">
-              <div class="project-text">
-                <h2>NLP-Driven Insights for Breastfeeding Support</h2>
-                <p>
-                  
-                </p>
-              </div>
-            </div>
+      <!-- Project 1 -->
+      <div class="project">
+        <img src="images/projects/sfl.png" alt="Soccer Analytics Project">
+        <div class="project-text">
+          <h2>Master Thesis: Effective Playing Time Analysis in Soccer Matches</h2>
+          <p>
+            
+          </p>
+        </div>
+      </div>
 
-            <div class="project">
-              <img src="images/experience/ZAPC.png" alt="Blood Glucose Visualization">
-              <div class="project-text">
-                <h2>Blood Glucose Prediction Visualization</h2>
-                <p>
-                  Conducted a user study at UZH to explore how visual design influences
-                  perception of blood glucose predictions. I ran surveys, analyzed data in Python,
-                  and helped design more accessible health dashboards.
-                </p>
-              </div>
-            </div>
+      <!-- Project 2 -->
+      <div class="project">
+        <img src="images/experience/2022_logo_flrf.png" alt="Breastfeeding AI Project">
+        <div class="project-text">
+          <h2>NLP-Driven Insights for Breastfeeding Support</h2>
+          <p>
+            
+          </p>
+        </div>
+      </div>
 
-            <div class="project">
-              <img src="images/projects/zoom_new_df_diz.png" alt="F1 Network Analysis">
-              <div class="project-text">
-                <h2>Formula 1 Collisions Network Analysis</h2>
-                <p>
-                  I explored Formula 1 race collision data using network analysis tools like Gephi and NetworkX,
-                  finding fascinating links between driver interactions across seasons.
-                </p>
-              </div>
-            </div>
+      <!-- Project 3 -->
+      <div class="project">
+        <img src="images/experience/ZAPC.png" alt="Blood Glucose Visualization">
+        <div class="project-text">
+          <h2>Blood Glucose Prediction Visualization</h2>
+          <p>
+            Conducted a user study at <strong>UZH</strong> exploring how visual design influences perception of blood glucose predictions.
+            I ran participant surveys, analyzed results in Python, and proposed visualization improvements for personalized health monitoring.
+          </p>
+        </div>
+      </div>
 
-            <div class="project">
-              <img src="images/projects/meditation.png" alt="Meditation Debugging">
-              <div class="project-text">
-                <h2>Meditation and Debugging Efficiency</h2>
-                <p>
-                  A psychology-meets-coding experiment! I tested how brief mindfulness sessions
-                  affected debugging efficiency. The process involved designing experiments,
-                  analyzing response data, and writing a report with behavioral insights.
-                </p>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <!-- Project 4 -->
+      <div class="project">
+        <img src="images/projects/zoom_new_df_diz.png" alt="F1 Network Analysis">
+        <div class="project-text">
+          <h2>Formula 1 Collisions Network Analysis</h2>
+          <p>
+            A personal data-viz project exploring F1 collisions using <strong>NetworkX</strong> and <strong>Gephi</strong>.
+            Built interactive graphs showing driver relationships, collision frequencies, and race-season dynamics — where chaos meets structure.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project">
+        <img src="images/projects/meditation.png" alt="Meditation Debugging">
+        <div class="project-text">
+          <h2>Meditation and Debugging Efficiency</h2>
+          <p>
+            An experiment testing how brief mindfulness sessions affect debugging focus.
+            Designed the study, gathered behavioral data, and wrote an analysis report linking reflection, attention, and problem-solving flow.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>

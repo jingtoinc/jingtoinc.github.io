@@ -35,7 +35,7 @@
       }
 
       .slide-item {
-        flex: 0 0 35%; /* exactly 5 per view */
+        flex: 0 0 30%; /* show 5 images per view */
         text-align: center;
         padding: 0 5px;
       }
@@ -44,6 +44,7 @@
         width: 100%;
         height: 400px;
         border-radius: 10px;
+        object-fit: cover;
       }
 
       .prev, .next {
@@ -57,6 +58,7 @@
         padding: 6px 12px;
         border-radius: 50%;
         transition: background 0.3s;
+        z-index: 2;
       }
 
       .prev:hover, .next:hover {
@@ -68,6 +70,42 @@
 
       /* Make sure slider arrows aren’t clipped */
       body { overflow: auto; }
+
+      /* --- Responsive adjustments for mobile --- */
+      @media (max-width: 900px) {
+        .slides img {
+          width: 100%;
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .slide-item {
+          flex: 0 0 80%; /* show 1 at a time */
+        }
+
+        .slides img {
+          height: 200px;
+        }
+
+        .prev, .next {
+          font-size: 20px;
+          padding: 5px 10px;
+          top: 45%;
+        }
+
+        .content {
+          padding: 15px;
+        }
+
+        h1.name {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 15px;
+        }
+      }
     </style>
   </head>
 
@@ -79,7 +117,7 @@
             <div class="cute-nav">
               <button onclick="window.location.href='index.html'">about</button>
               <button onclick="window.location.href='projects.html'">projects</button>
-              <button onclick="window.location.href='experiences.html'">experience</button>
+              <button onclick="window.location.href='experience.html'">experience</button>
               <button onclick="window.location.href='more.html'" class="active">wanna know more?</button>
             </div>
           </td>
@@ -89,83 +127,79 @@
           <td>
             <div class="content">
               <h1 class="name">Always on my life journey</h1>
-              <p>
-                I fail; I learn; I grow.  
-              </p>
+              <p>I fail; I learn; I grow.</p>
 
               <!-- Slider -->
               <div class="slider">
-    <div class="slides" id="slides">
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/IMG_0694.png" alt="Cat" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">Hi! I do like taking random funny pics</div>
-      </div>
+                <div class="slides" id="slides">
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/climb.JPG" alt="Climbing" style="border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">In Mallorca</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/IMG_0694.png" alt="Cat" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">Hi! I do like taking random funny pics</div>
+                  </div>
 
-      <div class="slide-item" style="width:80%;text-align:center;">
-        <img src="images/hobbies/hiking.JPG" alt="Hiking" style="border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/climb.JPG" alt="Climbing" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">In Mallorca</div>
+                  </div>
 
-      <div class="slide-item" style=text-align:center;">
-        <img src="images/hobbies/IMG_7702.png" alt="Cycling" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">Cycling (only with friends). Maybe will fall in love when I have another quater life crisis. </div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/hiking.JPG" alt="Hiking" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/ski.JPG" alt="Skiing" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">“Do you ski?"is literally the trickiest question to answer</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/IMG_7702.png" alt="Cycling" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">Cycling (only with friends). Maybe will fall in love when I have another quarter life crisis.</div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/crochet.JPG" alt="Crochet" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">As you can see</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/ski.JPG" alt="Skiing" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">“Do you ski?" is literally the trickiest question to answer</div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/IMG_0969.png" alt="Football" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/crochet.JPG" alt="Crochet" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">As you can see</div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/IMG_8746.png" alt="Football" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/IMG_0969.png" alt="Football" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/pottery.JPG" alt="Pottery" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">Recent obessessions</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/IMG_8746.png" alt="Football" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/cat.JPG" alt="Cat" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">My little sister Mimi</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/pottery.JPG" alt="Pottery" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">Recent obsessions</div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/cat_2.JPG" alt="Cat" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-      </div> 
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/cat.JPG" alt="Cat" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">My little sister Mimi</div>
+                  </div>
 
-      <div class="slide-item" style="text-align:center;">
-        <img src="images/hobbies/bread.JPG" alt="Bread" style="width:100%;border-radius:8px;object-fit:cover;">
-        <div style="font-size:13px;margin-top:4px;color:#444;">Sour dough era</div>
-      </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/cat_2.JPG" alt="Cat" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
+                  </div>
 
-  </div>
+                  <div class="slide-item" style="text-align:center;">
+                    <img src="images/hobbies/bread.JPG" alt="Bread" style="border-radius:8px;">
+                    <div style="font-size:13px;margin-top:4px;color:#444;">Sour dough era</div>
+                  </div>
 
-  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-  <button class="next" onclick="moveSlide(1)">&#10095;</button>
-</div>
+                </div>
 
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+              </div>
 
-              <p>
-                Say YES now and will figure it out later ;)  
-              </p>
+              <p>Say YES now and will figure it out later ;)</p>
             </div>
           </td>
         </tr>
@@ -174,24 +208,18 @@
 
     <script>
       const slides = document.getElementById("slides");
-      const images = slides.querySelectorAll("img");
-      const total = images.length;
-      const visibleCount = 5; // number of images visible at once
+      const items = slides.querySelectorAll(".slide-item");
+      const total = items.length;
       let currentIndex = 0;
 
       function moveSlide(step) {
         currentIndex = (currentIndex + step + total) % total;
-        // move by one image width each time
+        const visibleCount = window.innerWidth < 600 ? 1 : 5;
         slides.style.transform = `translateX(-${currentIndex * (300 / visibleCount)}%)`;
       }
 
-      // Seamless looping (auto-wrap effect)
-      function autoSlide() {
-        moveSlide(1);
-      }
-
-      // Uncomment to enable auto-play every 3 seconds:
-      // setInterval(autoSlide, 3000);
+      // Auto slide (optional)
+      // setInterval(() => moveSlide(1), 3000);
     </script>
   </body>
 </html>
