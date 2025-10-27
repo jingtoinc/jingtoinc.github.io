@@ -110,44 +110,48 @@
     .prev { left: 10px; }
     .next { right: 10px; }
 
-    /* --- Responsive adjustments --- */
-    @media (max-width: 1200px) {
-      .slide-item { flex: 0 0 25%; }
-    }
-
-    @media (max-width: 900px) {
-      .slide-item { flex: 0 0 50%; }
-      .slides img { height: 250px; }
-    }
-
     @media (max-width: 600px) {
-      .slide-item { flex: 0 0 100%; }
-      .slides img { height: 200px; }
+  .slider {
+    width: 80%; /* slightly smaller than screen */
+    margin: 0 auto;
+  }
 
-      .prev, .next {
-        font-size: 20px;
-        padding: 5px 10px;
-        top: 45%;
-      }
+  .slide-item {
+    flex: 0 0 80%; /* show slightly smaller image */
+    margin: 0 auto;
+  }
 
-      .content {
-        padding: 15px;
-      }
+  .slides img {
+    width: 100%;
+    height: auto;
+    max-height: 180px; /* reduce image height */
+    border-radius: 8px;
+  }
 
-      h1.name {
-        font-size: 24px;
-      }
+  .prev, .next {
+    font-size: 20px;
+    padding: 5px 10px;
+    top: 45%;
+  }
 
-      p {
-        font-size: 15px;
-      }
+  .content {
+    padding: 15px;
+  }
 
-      .cute-nav {
-        flex-wrap: wrap;
-        gap: 15px;
-        justify-content: center;
-      }
-    }
+  h1.name {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .cute-nav {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+}
 
     @media (max-width: 850px) {
       body {
@@ -222,32 +226,60 @@
     </tbody>
   </table>
 
-  <script>
-    const slides = document.getElementById("slides");
-    const items = slides.querySelectorAll(".slide-item");
-    const total = items.length;
-    let currentIndex = 0;
+<script>
+  const slides = document.getElementById("slides");
+  const items = slides.querySelectorAll(".slide-item");
+  const total = items.length;
+  let currentIndex = 0;
 
-    function getVisibleCount() {
-      if (window.innerWidth < 600) return 1;
-      if (window.innerWidth < 900) return 2;
-      if (window.innerWidth < 1200) return 4;
-      return 5;
+  function getVisibleCount() {
+    if (window.innerWidth < 600) return 1;
+    if (window.innerWidth < 900) return 2;
+    if (window.innerWidth < 1200) return 4;
+    return 5;
+  }
+
+  function updateSlidePosition() {
+    const visibleCount = getVisibleCount();
+    const offset = (100 / visibleCount) * currentIndex;
+    slides.style.transform = `translateX(-${offset}%)`;
+  }
+
+  function moveSlide(step) {
+    const visibleCount = getVisibleCount();
+    const maxIndex = total - visibleCount;
+    currentIndex = Math.min(Math.max(currentIndex + step, 0), maxIndex);
+    updateSlidePosition();
+  }
+
+  window.addEventListener("resize", updateSlidePosition);
+
+  // --- Swipe functionality ---
+  let startX = 0;
+  let endX = 0;
+  let isDragging = false;
+
+  slides.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  slides.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    endX = e.touches[0].clientX;
+  });
+
+  slides.addEventListener("touchend", () => {
+    if (!isDragging) return;
+    const diff = endX - startX;
+
+    if (Math.abs(diff) > 50) { // threshold to prevent accidental slides
+      if (diff < 0) moveSlide(1);   // swipe left → next
+      else moveSlide(-1);           // swipe right → previous
     }
 
-    function moveSlide(step) {
-      const visibleCount = getVisibleCount();
-      const maxIndex = total - visibleCount;
-      currentIndex = Math.min(Math.max(currentIndex + step, 0), maxIndex);
-      const offset = (100 / visibleCount) * currentIndex;
-      slides.style.transform = `translateX(-${offset}%)`;
-    }
-
-    window.addEventListener("resize", () => {
-      const visibleCount = getVisibleCount();
-      const offset = (100 / visibleCount) * currentIndex;
-      slides.style.transform = `translateX(-${offset}%)`;
-    });
-  </script>
-</body>
-</html>
+    isDragging = false;
+    startX = 0;
+    endX = 0;
+  });
+</script>
