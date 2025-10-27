@@ -396,3 +396,8 @@ td:last-child {
     gap: 15px;
   }
 }
+@media (max-width: 600px) {
+  body {
+    padding: 10px 0 40px; /* adds bottom breathing room for scrolling */
+  }
+}
