@@ -31,11 +31,11 @@
       .slides {
         display: flex;
         transition: transform 0.6s ease-in-out;
-        align-items: flex-start;
+        will-change: transform;
       }
 
       .slide-item {
-        flex: 0 0 20%; /* show 5 per view by default */
+        flex: 0 0 20%; /* 5 per view on large screens */
         text-align: center;
         padding: 0 5px;
         box-sizing: border-box;
@@ -69,21 +69,20 @@
       .prev { left: 10px; }
       .next { right: 10px; }
 
-      /* Make sure slider arrows aren’t clipped */
       body { overflow: auto; }
 
-      /* --- Responsive adjustments for mobile --- */
+      /* --- Responsive adjustments --- */
       @media (max-width: 1200px) {
         .slide-item { flex: 0 0 25%; } /* 4 per view */
       }
 
       @media (max-width: 900px) {
-        .slide-item { flex: 0 0 45%; } /* 2 per view */
+        .slide-item { flex: 0 0 50%; } /* 2 per view */
         .slides img { height: 250px; }
       }
 
       @media (max-width: 600px) {
-        .slide-item { flex: 0 0 90%; } /* 1 per view */
+        .slide-item { flex: 0 0 100%; } /* 1 per view */
         .slides img { height: 200px; }
 
         .prev, .next {
@@ -131,65 +130,18 @@
               <div class="slider">
                 <div class="slides" id="slides">
 
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/IMG_0694.png" alt="Cat" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">Hi! I do like taking random funny pics</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/climb.JPG" alt="Climbing" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">In Mallorca</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/hiking.JPG" alt="Hiking" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/IMG_7702.png" alt="Cycling" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">Cycling (only with friends). Maybe will fall in love when I have another quarter life crisis.</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/ski.JPG" alt="Skiing" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">“Do you ski?" is literally the trickiest question to answer</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/crochet.JPG" alt="Crochet" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">As you can see</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/IMG_0969.png" alt="Football" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/IMG_8746.png" alt="Football" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/pottery.JPG" alt="Pottery" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">Recent obsessions</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/cat.JPG" alt="Cat" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">My little sister Mimi</div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/cat_2.JPG" alt="Cat" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;"></div>
-                  </div>
-
-                  <div class="slide-item" style="text-align:center;">
-                    <img src="images/hobbies/bread.JPG" alt="Bread" style="border-radius:8px;">
-                    <div style="font-size:13px;margin-top:4px;color:#444;">Sour dough era</div>
-                  </div>
+                  <div class="slide-item"><img src="images/hobbies/IMG_0694.png" alt="Cat"><div style="font-size:13px;margin-top:4px;color:#444;">Hi! I do like taking random funny pics</div></div>
+                  <div class="slide-item"><img src="images/hobbies/climb.JPG" alt="Climbing"><div style="font-size:13px;margin-top:4px;color:#444;">In Mallorca</div></div>
+                  <div class="slide-item"><img src="images/hobbies/hiking.JPG" alt="Hiking"><div style="font-size:13px;margin-top:4px;color:#444;"></div></div>
+                  <div class="slide-item"><img src="images/hobbies/IMG_7702.png" alt="Cycling"><div style="font-size:13px;margin-top:4px;color:#444;">Cycling (only with friends). Maybe will fall in love when I have another quarter life crisis.</div></div>
+                  <div class="slide-item"><img src="images/hobbies/ski.JPG" alt="Skiing"><div style="font-size:13px;margin-top:4px;color:#444;">“Do you ski?" is literally the trickiest question to answer</div></div>
+                  <div class="slide-item"><img src="images/hobbies/crochet.JPG" alt="Crochet"><div style="font-size:13px;margin-top:4px;color:#444;">As you can see</div></div>
+                  <div class="slide-item"><img src="images/hobbies/IMG_0969.png" alt="Football"><div style="font-size:13px;margin-top:4px;color:#444;"></div></div>
+                  <div class="slide-item"><img src="images/hobbies/IMG_8746.png" alt="Football"><div style="font-size:13px;margin-top:4px;color:#444;"></div></div>
+                  <div class="slide-item"><img src="images/hobbies/pottery.JPG" alt="Pottery"><div style="font-size:13px;margin-top:4px;color:#444;">Recent obsessions</div></div>
+                  <div class="slide-item"><img src="images/hobbies/cat.JPG" alt="Cat"><div style="font-size:13px;margin-top:4px;color:#444;">My little sister Mimi</div></div>
+                  <div class="slide-item"><img src="images/hobbies/cat_2.JPG" alt="Cat"><div style="font-size:13px;margin-top:4px;color:#444;"></div></div>
+                  <div class="slide-item"><img src="images/hobbies/bread.JPG" alt="Bread"><div style="font-size:13px;margin-top:4px;color:#444;">Sour dough era</div></div>
 
                 </div>
 
@@ -219,13 +171,13 @@
 
       function moveSlide(step) {
         const visibleCount = getVisibleCount();
-        currentIndex = (currentIndex + step + total) % total;
+        const maxIndex = total - visibleCount;
+        currentIndex = Math.min(Math.max(currentIndex + step, 0), maxIndex);
         const offset = (100 / visibleCount) * currentIndex;
         slides.style.transform = `translateX(-${offset}%)`;
       }
 
       window.addEventListener("resize", () => {
-        // keep position consistent when resizing
         const visibleCount = getVisibleCount();
         const offset = (100 / visibleCount) * currentIndex;
         slides.style.transform = `translateX(-${offset}%)`;
