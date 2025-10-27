@@ -110,48 +110,73 @@
     .prev { left: 10px; }
     .next { right: 10px; }
 
-    @media (max-width: 600px) {
-  .slider {
-    width: 80%; /* slightly smaller than screen */
-    margin: 0 auto;
+   
+@media (max-width: 600px) {
+  /* Let the page flow vertically and avoid any forced heights */
+  body {
+    align-items: flex-start;
+    height: auto;
+    overflow: auto;
   }
-
-  .slide-item {
-    flex: 0 0 80%; /* show slightly smaller image */
-    margin: 0 auto;
-  }
-
-  .slides img {
+  table {
     width: 100%;
     height: auto;
-    max-height: 180px; /* reduce image height */
-    border-radius: 8px;
+    max-height: none;
+    border-radius: 0;            /* flatter edges on phones = more space */
+  }
+  .scroll-area {
+    height: auto;
+    max-height: none;
   }
 
-  .prev, .next {
-    font-size: 20px;
-    padding: 5px 10px;
-    top: 45%;
+  /* Tighter spacing & smaller text */
+  .cute-nav-container {
+    padding-top: 12px;
+    padding-bottom: 8px;
+  }
+  .cute-nav button {
+    font-size: 14px;
+    padding: 6px 10px;
   }
 
   .content {
-    padding: 15px;
+    padding: 12px;
   }
-
   h1.name {
-    font-size: 24px;
+    font-size: 20px;
+    margin: 8px 0;
   }
-
   p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
-  .cute-nav {
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+  /* Slider: narrower, one-at-a-time, smaller images */
+  .slider {
+    width: 100%;
+    margin: 8px auto 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .slide-item {
+    flex: 0 0 90%;              /* show one slide with a little side gutter */
+    margin: 0 auto;
+    padding: 0 4px;
+  }
+  .slides img {
+    width: 100%;
+    height: auto;               /* no fixed heights on phones */
+    max-height: 140px;          /* was 180px — smaller now */
+    border-radius: 8px;
+  }
+
+  /* Smaller arrows so they don’t crowd */
+  .prev, .next {
+    font-size: 18px;
+    padding: 4px 8px;
+    top: 45%;
   }
 }
+
 
     @media (max-width: 850px) {
       body {
