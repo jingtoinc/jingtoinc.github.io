@@ -35,9 +35,10 @@
       }
 
       .slide-item {
-        flex: 0 0 30%; /* show 5 images per view */
+        flex: 0 0 20%; /* show 5 per view by default */
         text-align: center;
         padding: 0 5px;
+        box-sizing: border-box;
       }
 
       .slides img {
@@ -72,21 +73,18 @@
       body { overflow: auto; }
 
       /* --- Responsive adjustments for mobile --- */
+      @media (max-width: 1200px) {
+        .slide-item { flex: 0 0 25%; } /* 4 per view */
+      }
+
       @media (max-width: 900px) {
-        .slides img {
-          width: 100%;
-          height: 200px;
-        }
+        .slide-item { flex: 0 0 45%; } /* 2 per view */
+        .slides img { height: 250px; }
       }
 
       @media (max-width: 600px) {
-        .slide-item {
-          flex: 0 0 80%; /* show 1 at a time */
-        }
-
-        .slides img {
-          height: 200px;
-        }
+        .slide-item { flex: 0 0 90%; } /* 1 per view */
+        .slides img { height: 200px; }
 
         .prev, .next {
           font-size: 20px;
@@ -212,12 +210,26 @@
       const total = items.length;
       let currentIndex = 0;
 
-      function moveSlide(step) {
-        currentIndex = (currentIndex + step + total) % total;
-        const visibleCount = window.innerWidth < 600 ? 1 : (window.innerWidth < 900 ? 2 : 5);
-        slides.style.transform = `translateX(-${currentIndex * (300 / visibleCount)}%)`;
+      function getVisibleCount() {
+        if (window.innerWidth < 600) return 1;
+        if (window.innerWidth < 900) return 2;
+        if (window.innerWidth < 1200) return 4;
+        return 5;
       }
 
+      function moveSlide(step) {
+        const visibleCount = getVisibleCount();
+        currentIndex = (currentIndex + step + total) % total;
+        const offset = (100 / visibleCount) * currentIndex;
+        slides.style.transform = `translateX(-${offset}%)`;
+      }
+
+      window.addEventListener("resize", () => {
+        // keep position consistent when resizing
+        const visibleCount = getVisibleCount();
+        const offset = (100 / visibleCount) * currentIndex;
+        slides.style.transform = `translateX(-${offset}%)`;
+      });
     </script>
   </body>
 </html>
